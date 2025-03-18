@@ -3,12 +3,12 @@ local HelpSections={}
 getgenv().PlayerDropType='Both'
 function Library:Initiate()
     CurrentTab=nil
-    if game.CoreGui:FindFirstChild'Ancestor'then 
-        game.CoreGui.Ancestor:Destroy();
+    if game.CoreGui:FindFirstChild'gamer'then 
+        game.CoreGui.gamer:Destroy();
     end;
-    local AncestorFunctions={};
+    local gamerFunctions={};
     local TweenService=game:GetService'TweenService';
-    local Ancestor = Instance.new("ScreenGui")
+    local gamer = Instance.new("ScreenGui")
     local MainFrame = Instance.new("Frame")
     local Categories = Instance.new("Frame")
     local ScrollingFrame = Instance.new("ScrollingFrame")
@@ -42,12 +42,12 @@ function Library:Initiate()
 
     --Properties:
 
-    Ancestor.Name = "Ancestor"
-    Ancestor.Parent = game.CoreGui
-    Ancestor.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    gamer.Name = "Khemscat gui"
+    gamer.Parent = game.CoreGui
+    gamer.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     MainFrame.Name = "MainFrame"
-    MainFrame.Parent = Ancestor
+    MainFrame.Parent = gamer
     MainFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
     MainFrame.BorderSizePixel = 0
     MainFrame.Position = UDim2.new(0.5, -350, 0.5, -200)
@@ -97,7 +97,7 @@ function Library:Initiate()
 		MainFrame:TweenPosition(UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y),'Out','Linear',0.01,true);
 	end;
 
-    function AncestorFunctions:GetHelpSections()
+    function gamerFunctions:GetHelpSections()
         return HelpSections;
     end;
 
@@ -142,7 +142,7 @@ function Library:Initiate()
 
     local CategoryAmount=0;
 
-    function AncestorFunctions:CreateOption(OptionText)
+    function gamerFunctions:CreateOption(OptionText)
         local NoticeGUI = Instance.new("ScreenGui")
         local Notice = Instance.new("Frame")
         local Main = Instance.new("Frame")
@@ -293,7 +293,7 @@ function Library:Initiate()
         repeat task.wait()until SelectionMade;
         return Option
     end;
-    function AncestorFunctions:CreateTab(ID,Name)
+    function gamerFunctions:CreateTab(ID,Name)
         local Tab={}
         -- ScrollingFrame.CanvasSize=ScrollingFrame.CanvasSize+UDim2.new(0,0,0,30)
         CategoryAmount=CategoryAmount+1;
@@ -952,7 +952,7 @@ function Library:Initiate()
                         end;
                     end);
                     game.CoreGui.ChildRemoved:Connect(function(Child)
-                        if tostring(Child)=='Ancestor'then 
+                        if tostring(Child)=='gamer'then 
                             pcall(function()
                                 CallbackConnection:Disconnect();
                                 InputConnection:Disconnect();
@@ -1744,7 +1744,7 @@ function Library:Initiate()
     end;
     local function Search()
         -- if TextBox.Text==''then return end
-        -- for i,v in next,game.CoreGui.Ancestor.MainFrame.Sections:GetDescendants()do 
+        -- for i,v in next,game.CoreGui.gamer.MainFrame.Sections:GetDescendants()do 
         --     if v:IsA'TextButton'or v:IsA'TextLabel'and tostring(v.Parent)~='Frame'then 
         --         if v.Text~=' 'and v.Text~=''and v.Text~='+'and v.Text~='-'then
         --             if string.find(v.Text:lower(),TextBox.Text:lower())then
@@ -1768,6 +1768,6 @@ function Library:Initiate()
 
     UICorner_2.Parent = Categories
     UICorner_2.CornerRadius=UDim.new(0,6)
-    return AncestorFunctions;
+    return gamerFunctions;
 end;
 return Library
